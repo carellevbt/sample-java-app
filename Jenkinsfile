@@ -43,7 +43,7 @@ stages{
     stage("push image to Dockerhub"){
         when{
             expression{
-                env.BRANCH_NAME = main
+                env.BRANCH_NAME = 'main'
             }
         }
         steps{
