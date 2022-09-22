@@ -18,25 +18,33 @@ stages{
     }
     stage("build jar file"){
         steps{
-            gv.buildJar()
+            script{
+                gv.buildJar()
+            }
         }
     }
 
     stage("build image"){
         steps{
-            gv.buildImage()
+            script{
+                gv.buildImage()
+            }
         }
     }
 
     stage("docker hub login"){
         steps{
-            gv.dockerlogin()
+            script{
+                gv.dockerlogin()
+            }
         }
     }
 
     stage("push image to Dockerhub"){
         steps{
-            gv.pushimage()
+            script{
+                gv.pushimage()
+            }
         }
     }
 }
