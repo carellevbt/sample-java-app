@@ -49,7 +49,9 @@ stages{
     }
 
     stage("success"){
-        echo 'success'
+        steps{
+            echo 'success'
+        }
     }
 }
 }
