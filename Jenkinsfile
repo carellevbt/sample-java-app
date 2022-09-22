@@ -47,5 +47,9 @@ stages{
             }
         }
     }
+
+    stage("success"){
+        echo 'success'
+    }
 }
 }
