@@ -11,7 +11,9 @@ tools{
 stages{
     stage("groovy file call"){
         steps{
-            gv.load = script.groovy
+            script{
+                gv = load "script.groovy"
+            }
         }
     }
     stage("build jar file"){
