@@ -41,11 +41,11 @@ stages{
     }
 
     stage("push image to Dockerhub"){
-    when{
-        expression{
-            env.BRANCH_NAME = main
+        when{
+            expression{
+                env.BRANCH_NAME = main
+            }
         }
-    }
         steps{
             script{
                 gv.pushimage()
