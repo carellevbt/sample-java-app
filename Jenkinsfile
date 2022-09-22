@@ -9,29 +9,32 @@ tools{
 }
 
 stages{
+    stage("groovy file call"){
+        steps{
+            gv.load = script.groovy
+        }
+    }
     stage("build jar file"){
         steps{
-            sh 'mvn package'
+            gv.buildJar()
         }
     }
 
     stage("build image"){
         steps{
-            sh 'docker build -t carellevbt/test-1:sample2 .'
+            gv.buildImage()
         }
     }
 
     stage("docker hub login"){
         steps{
-        withCredentials([usernamePassword(credentialsId: '7ea3ae58-0b89-46de-ba6b-085cd3c7465c', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-            sh 'echo $PASS | docker login -u $USER --password-stdin'
-        }
+            gv.dockerlogin()
         }
     }
 
     stage("push image to Dockerhub"){
         steps{
-            sh 'docker push carellevbt/test-1:sample2'
+            gv.pushimage()
         }
     }
 }
